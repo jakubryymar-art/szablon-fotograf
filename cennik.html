@@ -33,7 +33,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
                 <!-- Pakiet 1 -->
-                <div id="pakiet-1" onclick="zmienPakiet('pakiet-1')" class="border border-neutral-700 p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
+                <div id="pakiet-1" onclick="wybierzPakiet('pakiet-1', event)" class="border border-neutral-700 p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
                     <h3 id="title-pakiet-1" class="text-xl uppercase tracking-widest text-neutral-400 mb-4">Sesja Portretowa</h3>
                     <p class="text-4xl font-light mb-8">400 zł</p>
                     <ul id="list-pakiet-1" class="text-neutral-400 space-y-3 mb-10 text-sm">
@@ -41,11 +41,11 @@
                         <li>1 godzina sesji plenerowej</li>
                         <li>Galeria online</li>
                     </ul>
-                    <a id="btn-pakiet-1" href="javascript:void(0);" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block">Wybieram</a>
+                    <button id="btn-pakiet-1" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block">Wybieram</button>
                 </div>
 
                 <!-- Pakiet 2 (Domyślnie wybrany) -->
-                <div id="pakiet-2" onclick="zmienPakiet('pakiet-2')" class="border border-white p-10 text-center bg-white text-black transform scale-105 transition-all duration-500 cursor-default">
+                <div id="pakiet-2" onclick="wybierzPakiet('pakiet-2', event)" class="border border-white p-10 text-center bg-white text-black transform scale-105 transition-all duration-500 cursor-default">
                     <h3 id="title-pakiet-2" class="text-xl uppercase tracking-widest mb-4 text-black">Pakiet Ślubny</h3>
                     <p class="text-4xl font-light mb-8">3500 zł</p>
                     <ul id="list-pakiet-2" class="space-y-3 mb-10 text-sm text-black">
@@ -54,11 +54,11 @@
                         <li>Sesja narzeczeńska gratis</li>
                         <li>Ekskluzywny fotoalbum</li>
                     </ul>
-                    <a id="btn-pakiet-2" href="kontakt.html" class="bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition inline-block">Zarezerwuj</a>
+                    <button id="btn-pakiet-2" class="bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition inline-block">Zarezerwuj</button>
                 </div>
 
                 <!-- Pakiet 3 -->
-                <div id="pakiet-3" onclick="zmienPakiet('pakiet-3')" class="border border-neutral-700 p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
+                <div id="pakiet-3" onclick="wybierzPakiet('pakiet-3', event)" class="border border-neutral-700 p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
                     <h3 id="title-pakiet-3" class="text-xl uppercase tracking-widest text-neutral-400 mb-4">Sesja Biznesowa</h3>
                     <p class="text-4xl font-light mb-8">600 zł</p>
                     <ul id="list-pakiet-3" class="text-neutral-400 space-y-3 mb-10 text-sm">
@@ -66,7 +66,7 @@
                         <li>Dojazd do biura klienta</li>
                         <li>Licencja komercyjna</li>
                     </ul>
-                    <a id="btn-pakiet-3" href="javascript:void(0);" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block">Wybieram</a>
+                    <button id="btn-pakiet-3" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block">Wybieram</button>
                 </div>
             </div>
         </div>
@@ -79,33 +79,48 @@
 
     <!-- Skrypt do obsługi kliknięć -->
     <script>
-        function zmienPakiet(wybranyId) {
+        // Pakiet ślubny jest wybrany na start
+        let aktualnieWybrany = 'pakiet-2';
+
+        function wybierzPakiet(id, event) {
+            // Sprawdzamy, czy kliknięta karta jest już tą dużą i aktywną
+            if (aktualnieWybrany === id) {
+                // Jeśli tak, sprawdzamy czy użytkownik kliknął w przycisk "Zarezerwuj"
+                if (event.target.tagName.toLowerCase() === 'button') {
+                    // Dopiero teraz wysyłamy do kontaktu
+                    window.location.href = 'kontakt.html';
+                }
+                // Jeśli kliknął w tło aktywnej karty, nic się nie dzieje
+                return; 
+            }
+
+            // Zmieniamy aktywny pakiet
+            aktualnieWybrany = id;
+
+            // Odświeżamy kolory wszystkich kart
             const pakiety = ['pakiet-1', 'pakiet-2', 'pakiet-3'];
+            pakiety.forEach(pakietId => {
+                const karta = document.getElementById(pakietId);
+                const przycisk = document.getElementById('btn-' + pakietId);
+                const naglowek = document.getElementById('title-' + pakietId);
+                const lista = document.getElementById('list-' + pakietId);
 
-            pakiety.forEach(id => {
-                const karta = document.getElementById(id);
-                const przycisk = document.getElementById('btn-' + id);
-                const naglowek = document.getElementById('title-' + id);
-                const lista = document.getElementById('list-' + id);
-
-                if (id === wybranyId) {
-                    // Aktywny pakiet (Staje się duży i biały)
+                if (pakietId === aktualnieWybrany) {
+                    // Styl dla wybranego (Biały, duży)
                     karta.className = "border border-white p-10 text-center bg-white text-black transform scale-105 transition-all duration-500 cursor-default";
                     naglowek.className = "text-xl uppercase tracking-widest mb-4 text-black";
                     lista.className = "space-y-3 mb-10 text-sm text-black";
                     
                     przycisk.className = "bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition inline-block";
                     przycisk.innerText = "Zarezerwuj";
-                    przycisk.href = "kontakt.html"; // Ten przycisk prowadzi do kontaktu
                 } else {
-                    // Nieaktywne pakiety (Zmniejszają się i robią się ciemne)
+                    // Styl dla niewybranych (Ciemny, normalny)
                     karta.className = "border border-neutral-700 p-10 text-center hover:border-white transition-all duration-500 cursor-pointer";
                     naglowek.className = "text-xl uppercase tracking-widest text-neutral-400 mb-4";
                     lista.className = "text-neutral-400 space-y-3 mb-10 text-sm";
                     
                     przycisk.className = "border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block";
                     przycisk.innerText = "Wybieram";
-                    przycisk.href = "javascript:void(0);"; // Blokuje przejście dalej
                 }
             });
         }
