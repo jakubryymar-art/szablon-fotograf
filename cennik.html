@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cennik - Jan Kowalski Fotografia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-neutral-950 text-neutral-100 font-sans antialiased pt-20">
+
+    <!-- Nawigacja (identyczna jak na stronie głównej) -->
+    <nav class="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="text-2xl font-light tracking-widest uppercase hover:text-white transition">Kowalski.</a>
+                
+                <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide text-neutral-400">
+                    <a href="portrety.html" class="hover:text-white transition">Portrety</a>
+                    <a href="slubna.html" class="hover:text-white transition">Ślubna</a>
+                    <a href="artystyczna.html" class="hover:text-white transition">Artystyczna</a>
+                    <a href="cennik.html" class="text-white border-b border-white pb-1">Cennik</a>
+                    <a href="kontakt.html" class="hover:text-white transition">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sekcja Cennik -->
+    <section class="py-24 px-6 bg-neutral-900 min-h-[calc(100vh-160px)]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-light uppercase tracking-widest mb-16 text-center">Inwestycja w wspomnienia</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pakiet 1 -->
+                <div class="border border-neutral-700 p-10 text-center hover:border-white transition">
+                    <h3 class="text-xl uppercase tracking-widest text-neutral-400 mb-4">Sesja Portretowa</h3>
+                    <p class="text-4xl font-light mb-8">400 zł</p>
+                    <ul class="text-neutral-400 space-y-3 mb-10 text-sm">
+                        <li>15 obrobionych zdjęć</li>
+                        <li>1 godzina sesji plenerowej</li>
+                        <li>Galeria online</li>
+                    </ul>
+                    <a href="kontakt.html" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition">Wybieram</a>
+                </div>
+                <!-- Pakiet 2 -->
+                <div class="border border-white p-10 text-center bg-white text-black transform scale-105">
+                    <h3 class="text-xl uppercase tracking-widest mb-4">Pakiet Ślubny</h3>
+                    <p class="text-4xl font-light mb-8">3500 zł</p>
+                    <ul class="space-y-3 mb-10 text-sm">
+                        <li>Reportaż do 12 godzin</li>
+                        <li>Min. 400 zdjęć po obróbce</li>
+                        <li>Sesja narzeczeńska gratis</li>
+                        <li>Ekskluzywny fotoalbum</li>
+                    </ul>
+                    <a href="kontakt.html" class="bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition">Zarezerwuj</a>
+                </div>
+                <!-- Pakiet 3 -->
+                <div class="border border-neutral-700 p-10 text-center hover:border-white transition">
+                    <h3 class="text-xl uppercase tracking-widest text-neutral-400 mb-4">Sesja Biznesowa</h3>
+                    <p class="text-4xl font-light mb-8">600 zł</p>
+                    <ul class="text-neutral-400 space-y-3 mb-10 text-sm">
+                        <li>10 profesjonalnych zdjęć</li>
+                        <li>Dojazd do biura klienta</li>
+                        <li>Licencja komercyjna</li>
+                    </ul>
+                    <a href="kontakt.html" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition">Wybieram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stopka -->
+    <footer class="text-center py-6 border-t border-neutral-900 text-neutral-600 text-sm">
+        <p>&copy; 2026 Jan Kowalski Fotografia. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+</body>
+</html>

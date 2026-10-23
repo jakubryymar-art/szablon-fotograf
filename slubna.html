@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotografia Ślubna - Jan Kowalski</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-neutral-950 text-neutral-100 font-sans antialiased pt-20">
+
+    <!-- Nawigacja -->
+    <nav class="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="text-2xl font-light tracking-widest uppercase hover:text-white transition">Kowalski.</a>
+                
+                <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide text-neutral-400">
+                    <a href="portrety.html" class="hover:text-white transition">Portrety</a>
+                    <a href="slubna.html" class="text-white border-b border-white pb-1">Ślubna</a>
+                    <a href="artystyczna.html" class="hover:text-white transition">Artystyczna</a>
+                    <a href="cennik.html" class="hover:text-white transition">Cennik</a>
+                    <a href="kontakt.html" class="hover:text-white transition">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Galeria Ślubna -->
+    <section class="py-24 px-6 min-h-[calc(100vh-160px)] max-w-7xl mx-auto">
+        <h2 class="text-3xl font-light uppercase tracking-widest mb-12 text-center border-b border-neutral-800 pb-6">Fotografia Ślubna</h2>
+        
+        <!-- Siatka ze zdjęciami -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <img src="zs1.jpeg" alt="Zdjęcie ślubne 1" class="w-full h-[500px] object-cover hover:opacity-80 transition duration-300">
+            <img src="zs2.jpeg" alt="Zdjęcie ślubne 2" class="w-full h-[500px] object-cover hover:opacity-80 transition duration-300">
+            <img src="zs3.jpeg" alt="Zdjęcie ślubne 3" class="w-full h-[500px] object-cover hover:opacity-80 transition duration-300">
+        </div>
+    </section>
+
+    <!-- Stopka -->
+    <footer class="text-center py-6 border-t border-neutral-900 text-neutral-600 text-sm">
+        <p>&copy; 2026 Jan Kowalski Fotografia. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+</body>
+</html>
