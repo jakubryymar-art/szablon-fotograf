@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>">
+<head>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt - Jan Kowalski Fotografia</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-neutral-950 text-neutral-100 font-sans antialiased pt-20">
+<body class="bg-neutral-950 text-neutral-100 font-sans antialiased pt-16 md:pt-20 selection:bg-white selection:text-black">
 
     <!-- Nawigacja -->
-    <nav class="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="index.html" class="text-2xl font-light tracking-widest uppercase hover:text-white transition">Kowalski.</a>
+    <nav class="fixed top-0 left-0 w-full z-50 bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="index.html" class="text-xl md:text-2xl font-light tracking-widest uppercase hover:text-white transition">
+                    Kowalski.
+                </a>
                 
+                <!-- Menu na komputery -->
                 <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide text-neutral-400">
                     <a href="portrety.html" class="hover:text-white transition">Portrety</a>
                     <a href="slubna.html" class="hover:text-white transition">Ślubna</a>
@@ -21,26 +26,71 @@
                     <a href="cennik.html" class="hover:text-white transition">Cennik</a>
                     <a href="kontakt.html" class="text-white border-b border-white pb-1">Kontakt</a>
                 </div>
+
+                <!-- Przycisk Hamburgera (widoczny tylko na telefonie) -->
+                <button id="mobile-menu-btn" aria-label="Otwórz menu" class="md:hidden text-neutral-300 hover:text-white focus:outline-none p-2">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <!-- Rozwijane menu mobilne -->
+        <div id="mobile-menu" class="hidden md:hidden bg-neutral-950/95 border-b border-neutral-800 px-6 py-6 space-y-4 text-center text-sm uppercase tracking-widest text-neutral-400">
+            <a href="portrety.html" class="block py-2 hover:text-white transition">Portrety</a>
+            <a href="slubna.html" class="block py-2 hover:text-white transition">Ślubna</a>
+            <a href="artystyczna.html" class="block py-2 hover:text-white transition">Artystyczna</a>
+            <a href="cennik.html" class="block py-2 hover:text-white transition">Cennik</a>
+            <a href="kontakt.html" class="block py-2 text-white font-medium">Kontakt</a>
         </div>
     </nav>
 
     <!-- Sekcja Kontakt -->
-    <section class="py-24 px-6 min-h-[calc(100vh-160px)] flex flex-col items-center justify-center max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl font-light uppercase tracking-widest mb-8">Skontaktuj się ze mną</h2>
-        <p class="text-neutral-400 mb-12">Zadaj pytanie, sprawdź wolny termin lub po prostu napisz "Cześć!". Odpowiadam najszybciej jak to możliwe.</p>
+    <section class="py-12 md:py-24 px-4 sm:px-6 min-h-[calc(100dvh-140px)] flex flex-col items-center justify-center max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl sm:text-3xl font-light uppercase tracking-widest mb-6 sm:mb-8">
+            Skontaktuj się ze mną
+        </h2>
+        <p class="text-sm sm:text-base text-neutral-400 mb-10 sm:mb-12 max-w-xl">
+            Zadaj pytanie, sprawdź wolny termin lub po prostu napisz "Cześć!". Odpowiadam najszybciej jak to możliwe.
+        </p>
         
-        <div class="text-xl mb-12 space-y-4">
-            <p>✉️ <a href="mailto:kontakt.rymar@gmail.com" class="hover:text-white transition">kontakt.rymar@gmail.com</a></p>
+        <div class="text-base sm:text-xl mb-10 sm:mb-12 space-y-4">
+            <p>
+                ✉️ <a href="mailto:kontakt.rymar@gmail.com" class="hover:text-white transition break-all">kontakt.rymar@gmail.com</a>
+            </p>
         </div>
         
-        <div class="flex justify-center space-x-8 text-neutral-400 uppercase tracking-widest text-sm">
-            <a href="https://www.instagram.com/rymarjakub/" target="_blank" class="hover:text-white transition">Instagram</a>
-            <a href="https://www.facebook.com/jakub.rymar/" target="_blank" class="hover:text-white transition">Facebook</a>
+        <div class="flex justify-center space-x-6 sm:space-x-8 text-neutral-400 uppercase tracking-widest text-xs sm:text-sm">
+            <a href="https://www.instagram.com/rymarjakub/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition py-2">Instagram</a>
+            <a href="https://www.facebook.com/jakub.rymar/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition py-2">Facebook</a>
         </div>
     </section>
 
     <!-- Stopka -->
-    <footer class="text-center py-6 border-t border-neutral-900 text-neutral-600 text-sm">
+    <footer class="text-center py-6 px-4 border-t border-neutral-900 text-neutral-600 text-xs sm:text-sm">
         <p>&copy; 2026 Jan Kowalski Fotografia. Wszelkie prawa zastrzeżone.</p>
-        <p class="mt-2 text-xs">Projekt i wykonanie: <a href="https://jakub-rymar-projektant-stron.vercel.app/" target="_blank" class="text-neutral
+        <p class="mt-2 text-xs">
+            Projekt i wykonanie: <a href="https://jakub-rymar-projektant-stron.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-neutral-400 hover:text-white transition">Jakub Rymar</a>
+        </p>
+    </footer>
+
+    <!-- Skrypt obsługujący otwieranie/zamykanie menu na telefonie -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            
+            if (menu.classList.contains('hidden')) {
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+    </script>
+
+</body>
+</html>
