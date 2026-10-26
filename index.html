@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>">
+<head>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jan Kowalski - Fotografia</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .fade-in { animation: fadeIn 1s ease-in-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
     </style>
 </head>
-<body class="bg-neutral-950 text-neutral-100 font-sans antialiased">
+<body class="bg-neutral-950 text-neutral-100 font-sans antialiased selection:bg-white selection:text-black">
 
     <!-- Nawigacja -->
-    <nav class="fixed w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="index.html" class="text-2xl font-light tracking-widest uppercase hover:text-white transition">Kowalski.</a>
+    <nav class="fixed top-0 left-0 w-full z-50 bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="index.html" class="text-xl md:text-2xl font-light tracking-widest uppercase hover:text-white transition">
+                    Kowalski.
+                </a>
                 
+                <!-- Menu na komputery (ukryte na telefonie) -->
                 <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide text-neutral-400">
                     <a href="portrety.html" class="hover:text-white transition">Portrety</a>
                     <a href="slubna.html" class="hover:text-white transition">Ślubna</a>
@@ -25,21 +33,61 @@
                     <a href="cennik.html" class="hover:text-white transition">Cennik</a>
                     <a href="kontakt.html" class="hover:text-white transition">Kontakt</a>
                 </div>
+
+                <!-- Przycisk Hamburgera (widoczny tylko na telefonie) -->
+                <button id="mobile-menu-btn" aria-label="Otwórz menu" class="md:hidden text-neutral-300 hover:text-white focus:outline-none p-2">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <!-- Rozwijane menu mobilne -->
+        <div id="mobile-menu" class="hidden md:hidden bg-neutral-950/95 border-b border-neutral-800 px-6 py-6 space-y-4 text-center text-sm uppercase tracking-widest text-neutral-300">
+            <a href="portrety.html" class="block py-2 hover:text-white transition">Portrety</a>
+            <a href="slubna.html" class="block py-2 hover:text-white transition">Ślubna</a>
+            <a href="artystyczna.html" class="block py-2 hover:text-white transition">Artystyczna</a>
+            <a href="cennik.html" class="block py-2 hover:text-white transition">Cennik</a>
+            <a href="kontakt.html" class="block py-2 hover:text-white transition">Kontakt</a>
         </div>
     </nav>
 
     <!-- Sekcja Hero -->
-    <header class="relative h-screen flex items-center justify-center text-center px-6">
+    <header class="relative min-h-[100dvh] flex items-center justify-center text-center px-4 sm:px-6 pt-16">
         <div class="absolute inset-0 z-0">
             <img src="https://picsum.photos/seed/hero/1920/1080" alt="Tło fotografia" class="w-full h-full object-cover opacity-30">
         </div>
-        <div class="relative z-10 max-w-3xl fade-in">
-            <h1 class="text-5xl md:text-7xl font-light mb-6">Zatrzymuję emocje w kadrze.</h1>
-            <p class="text-xl text-neutral-400 mb-10 font-light">Profesjonalna fotografia ślubna i portretowa w Krakowie i okolicach.</p>
-            <a href="kontakt.html" class="bg-white text-black px-8 py-4 uppercase tracking-widest text-sm hover:bg-neutral-300 transition">Zarezerwuj termin</a>
+        <div class="relative z-10 max-w-3xl mx-auto fade-in py-12">
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-light mb-4 sm:mb-6 leading-tight">
+                Zatrzymuję emocje w kadrze.
+            </h1>
+            <p class="text-base sm:text-xl text-neutral-400 mb-8 sm:mb-10 font-light max-w-xl mx-auto px-2">
+                Profesjonalna fotografia ślubna i portretowa w Krakowie i okolicach.
+            </p>
+            <a href="kontakt.html" class="inline-block bg-white text-black px-6 py-3.5 sm:px-8 sm:py-4 uppercase tracking-widest text-xs sm:text-sm font-medium hover:bg-neutral-300 transition">
+                Zarezerwuj termin
+            </a>
         </div>
     </header>
+
+    <!-- Skrypt obsługujący otwieranie/zamykanie menu na telefonie -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            
+            // Zmiana ikony z 3 kresek (hamburger) na "X" po otwarciu
+            if (menu.classList.contains('hidden')) {
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+    </script>
 
 </body>
 </html>
