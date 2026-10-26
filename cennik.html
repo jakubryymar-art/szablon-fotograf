@@ -56,7 +56,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
                 
                 <!-- Pakiet 1 -->
-                <div id="pakiet-1" onclick="wybierzPakiet('pakiet-1', event)" class="border border-neutral-700 p-6 sm:p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
+                <div id="pakiet-1" onclick="wybierzPakiet('pakiet-1')" class="border border-neutral-700 p-6 sm:p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
                     <h3 id="title-pakiet-1" class="text-lg sm:text-xl uppercase tracking-widest text-neutral-400 mb-3 sm:mb-4">Sesja Portretowa</h3>
                     <p class="text-3xl sm:text-4xl font-light mb-6 sm:mb-8">400 zł</p>
                     <ul id="list-pakiet-1" class="text-neutral-400 space-y-3 mb-8 sm:mb-10 text-sm">
@@ -64,11 +64,11 @@
                         <li>1 godzina sesji plenerowej</li>
                         <li>Galeria online</li>
                     </ul>
-                    <button id="btn-pakiet-1" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block w-full sm:w-auto">Wybieram</button>
+                    <button id="btn-pakiet-1" onclick="kliknieciePrzycisku('pakiet-1', event)" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block w-full sm:w-auto">Wybieram</button>
                 </div>
 
                 <!-- Pakiet 2 (Domyślnie wybrany) -->
-                <div id="pakiet-2" onclick="wybierzPakiet('pakiet-2', event)" class="border border-white p-6 sm:p-10 text-center bg-white text-black transform md:scale-105 shadow-2xl transition-all duration-500 cursor-default">
+                <div id="pakiet-2" onclick="wybierzPakiet('pakiet-2')" class="border border-white p-6 sm:p-10 text-center bg-white text-black transform md:scale-105 shadow-2xl transition-all duration-500 cursor-pointer">
                     <h3 id="title-pakiet-2" class="text-lg sm:text-xl uppercase tracking-widest mb-3 sm:mb-4 text-black">Pakiet Ślubny</h3>
                     <p class="text-3xl sm:text-4xl font-light mb-6 sm:mb-8">3500 zł</p>
                     <ul id="list-pakiet-2" class="space-y-3 mb-8 sm:mb-10 text-sm text-black">
@@ -77,11 +77,11 @@
                         <li>Sesja narzeczeńska gratis</li>
                         <li>Ekskluzywny fotoalbum</li>
                     </ul>
-                    <button id="btn-pakiet-2" class="bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition inline-block w-full sm:w-auto">Zarezerwuj</button>
+                    <button id="btn-pakiet-2" onclick="kliknieciePrzycisku('pakiet-2', event)" class="bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition inline-block w-full sm:w-auto">Zarezerwuj</button>
                 </div>
 
                 <!-- Pakiet 3 -->
-                <div id="pakiet-3" onclick="wybierzPakiet('pakiet-3', event)" class="border border-neutral-700 p-6 sm:p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
+                <div id="pakiet-3" onclick="wybierzPakiet('pakiet-3')" class="border border-neutral-700 p-6 sm:p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
                     <h3 id="title-pakiet-3" class="text-lg sm:text-xl uppercase tracking-widest text-neutral-400 mb-3 sm:mb-4">Sesja Biznesowa</h3>
                     <p class="text-3xl sm:text-4xl font-light mb-6 sm:mb-8">600 zł</p>
                     <ul id="list-pakiet-3" class="text-neutral-400 space-y-3 mb-8 sm:mb-10 text-sm">
@@ -89,7 +89,7 @@
                         <li>Dojazd do biura klienta</li>
                         <li>Licencja komercyjna</li>
                     </ul>
-                    <button id="btn-pakiet-3" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block w-full sm:w-auto">Wybieram</button>
+                    <button id="btn-pakiet-3" onclick="kliknieciePrzycisku('pakiet-3', event)" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block w-full sm:w-auto">Wybieram</button>
                 </div>
 
             </div>
@@ -120,14 +120,7 @@
         // 2. Obsługa wyboru pakietów
         let aktualnieWybrany = 'pakiet-2';
 
-        function wybierzPakiet(id, event) {
-            if (aktualnieWybrany === id) {
-                if (event.target.tagName.toLowerCase() === 'button') {
-                    window.location.href = 'kontakt.html';
-                }
-                return; 
-            }
-
+        function wybierzPakiet(id) {
             aktualnieWybrany = id;
 
             const pakiety = ['pakiet-1', 'pakiet-2', 'pakiet-3'];
@@ -138,14 +131,36 @@
                 const lista = document.getElementById('list-' + pakietId);
 
                 if (pakietId === aktualnieWybrany) {
-                    // Styl dla wybranego (Biały, powiększony tylko na ekranach md i większych)
-                    karta.className = "border border-white p-6 sm:p-10 text-center bg-white text-black transform md:scale-105 shadow-2xl transition-all duration-500 cursor-default";
+                    // Wybrany pakiet (biały, powiększony)
+                    karta.className = "border border-white p-6 sm:p-10 text-center bg-white text-black transform md:scale-105 shadow-2xl transition-all duration-500 cursor-pointer";
                     naglowek.className = "text-lg sm:text-xl uppercase tracking-widest mb-3 sm:mb-4 text-black";
                     lista.className = "space-y-3 mb-8 sm:mb-10 text-sm text-black";
                     
                     przycisk.className = "bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition inline-block w-full sm:w-auto";
                     przycisk.innerText = "Zarezerwuj";
                 } else {
-                    // Styl dla niewybranych (Ciemny, normalny)
+                    // Niewybrane pakiety (ciemne)
                     karta.className = "border border-neutral-700 p-6 sm:p-10 text-center hover:border-white transition-all duration-500 cursor-pointer";
-                    naglowek.className = "text-lg sm:
+                    naglowek.className = "text-lg sm:text-xl uppercase tracking-widest text-neutral-400 mb-3 sm:mb-4";
+                    lista.className = "text-neutral-400 space-y-3 mb-8 sm:mb-10 text-sm";
+                    
+                    przycisk.className = "border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block w-full sm:w-auto";
+                    przycisk.innerText = "Wybieram";
+                }
+            });
+        }
+
+        function kliknieciePrzycisku(id, event) {
+            event.stopPropagation(); // Zatrzymuje propagację, żeby kliknięcie w przycisk nie wywoływało podwójnie akcji karty
+
+            if (aktualnieWybrany === id) {
+                // Jeśli kliknięto "Zarezerwuj" na aktywnym pakiecie, przejdź do kontaktu
+                window.location.href = 'kontakt.html';
+            } else {
+                // Jeśli kliknięto "Wybieram" na nieaktywnym pakiecie, zaznacz go
+                wybierzPakiet(id);
+            }
+        }
+    </script>
+</body>
+</html>
