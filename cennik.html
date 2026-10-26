@@ -7,14 +7,18 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-neutral-950 text-neutral-100 font-sans antialiased pt-20">
+<body class="bg-neutral-950 text-neutral-100 font-sans antialiased pt-16 md:pt-20 selection:bg-white selection:text-black overflow-x-hidden">
 
     <!-- Nawigacja -->
-    <nav class="fixed top-0 w-full z-50 bg-neutral-950/80 backdrop-blur-md border-b border-neutral-800">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="index.html" class="text-2xl font-light tracking-widest uppercase hover:text-white transition">Kowalski.</a>
+    <nav class="fixed top-0 left-0 w-full z-50 bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="index.html" class="text-xl md:text-2xl font-light tracking-widest uppercase hover:text-white transition">
+                    Kowalski.
+                </a>
                 
+                <!-- Menu na komputery -->
                 <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide text-neutral-400">
                     <a href="portrety.html" class="hover:text-white transition">Portrety</a>
                     <a href="slubna.html" class="hover:text-white transition">Ślubna</a>
@@ -22,82 +26,110 @@
                     <a href="cennik.html" class="text-white border-b border-white pb-1">Cennik</a>
                     <a href="kontakt.html" class="hover:text-white transition">Kontakt</a>
                 </div>
+
+                <!-- Przycisk Hamburgera (widoczny tylko na telefonie) -->
+                <button id="mobile-menu-btn" aria-label="Otwórz menu" class="md:hidden text-neutral-300 hover:text-white focus:outline-none p-2">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
+        </div>
+
+        <!-- Rozwijane menu mobilne -->
+        <div id="mobile-menu" class="hidden md:hidden bg-neutral-950/95 border-b border-neutral-800 px-6 py-6 space-y-4 text-center text-sm uppercase tracking-widest text-neutral-400">
+            <a href="portrety.html" class="block py-2 hover:text-white transition">Portrety</a>
+            <a href="slubna.html" class="block py-2 hover:text-white transition">Ślubna</a>
+            <a href="artystyczna.html" class="block py-2 hover:text-white transition">Artystyczna</a>
+            <a href="cennik.html" class="block py-2 text-white font-medium">Cennik</a>
+            <a href="kontakt.html" class="block py-2 hover:text-white transition">Kontakt</a>
         </div>
     </nav>
 
     <!-- Sekcja Cennik -->
-    <section class="py-24 px-6 bg-neutral-900 min-h-[calc(100vh-160px)]">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-light uppercase tracking-widest mb-16 text-center">Inwestycja w wspomnienia</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section class="py-12 md:py-24 px-4 sm:px-6 bg-neutral-900 min-h-[calc(100dvh-140px)] flex items-center">
+        <div class="max-w-6xl mx-auto w-full">
+            <h2 class="text-2xl sm:text-3xl font-light uppercase tracking-widest mb-10 md:mb-16 text-center">
+                Inwestycja we wspomnienia
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
                 
                 <!-- Pakiet 1 -->
-                <div id="pakiet-1" onclick="wybierzPakiet('pakiet-1', event)" class="border border-neutral-700 p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
-                    <h3 id="title-pakiet-1" class="text-xl uppercase tracking-widest text-neutral-400 mb-4">Sesja Portretowa</h3>
-                    <p class="text-4xl font-light mb-8">400 zł</p>
-                    <ul id="list-pakiet-1" class="text-neutral-400 space-y-3 mb-10 text-sm">
+                <div id="pakiet-1" onclick="wybierzPakiet('pakiet-1', event)" class="border border-neutral-700 p-6 sm:p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
+                    <h3 id="title-pakiet-1" class="text-lg sm:text-xl uppercase tracking-widest text-neutral-400 mb-3 sm:mb-4">Sesja Portretowa</h3>
+                    <p class="text-3xl sm:text-4xl font-light mb-6 sm:mb-8">400 zł</p>
+                    <ul id="list-pakiet-1" class="text-neutral-400 space-y-3 mb-8 sm:mb-10 text-sm">
                         <li>15 obrobionych zdjęć</li>
                         <li>1 godzina sesji plenerowej</li>
                         <li>Galeria online</li>
                     </ul>
-                    <button id="btn-pakiet-1" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block">Wybieram</button>
+                    <button id="btn-pakiet-1" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block w-full sm:w-auto">Wybieram</button>
                 </div>
 
                 <!-- Pakiet 2 (Domyślnie wybrany) -->
-                <div id="pakiet-2" onclick="wybierzPakiet('pakiet-2', event)" class="border border-white p-10 text-center bg-white text-black transform scale-105 transition-all duration-500 cursor-default">
-                    <h3 id="title-pakiet-2" class="text-xl uppercase tracking-widest mb-4 text-black">Pakiet Ślubny</h3>
-                    <p class="text-4xl font-light mb-8">3500 zł</p>
-                    <ul id="list-pakiet-2" class="space-y-3 mb-10 text-sm text-black">
+                <div id="pakiet-2" onclick="wybierzPakiet('pakiet-2', event)" class="border border-white p-6 sm:p-10 text-center bg-white text-black transform md:scale-105 shadow-2xl transition-all duration-500 cursor-default">
+                    <h3 id="title-pakiet-2" class="text-lg sm:text-xl uppercase tracking-widest mb-3 sm:mb-4 text-black">Pakiet Ślubny</h3>
+                    <p class="text-3xl sm:text-4xl font-light mb-6 sm:mb-8">3500 zł</p>
+                    <ul id="list-pakiet-2" class="space-y-3 mb-8 sm:mb-10 text-sm text-black">
                         <li>Reportaż do 12 godzin</li>
                         <li>Min. 400 zdjęć po obróbce</li>
                         <li>Sesja narzeczeńska gratis</li>
                         <li>Ekskluzywny fotoalbum</li>
                     </ul>
-                    <button id="btn-pakiet-2" class="bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition inline-block">Zarezerwuj</button>
+                    <button id="btn-pakiet-2" class="bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition inline-block w-full sm:w-auto">Zarezerwuj</button>
                 </div>
 
                 <!-- Pakiet 3 -->
-                <div id="pakiet-3" onclick="wybierzPakiet('pakiet-3', event)" class="border border-neutral-700 p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
-                    <h3 id="title-pakiet-3" class="text-xl uppercase tracking-widest text-neutral-400 mb-4">Sesja Biznesowa</h3>
-                    <p class="text-4xl font-light mb-8">600 zł</p>
-                    <ul id="list-pakiet-3" class="text-neutral-400 space-y-3 mb-10 text-sm">
+                <div id="pakiet-3" onclick="wybierzPakiet('pakiet-3', event)" class="border border-neutral-700 p-6 sm:p-10 text-center hover:border-white transition-all duration-500 cursor-pointer">
+                    <h3 id="title-pakiet-3" class="text-lg sm:text-xl uppercase tracking-widest text-neutral-400 mb-3 sm:mb-4">Sesja Biznesowa</h3>
+                    <p class="text-3xl sm:text-4xl font-light mb-6 sm:mb-8">600 zł</p>
+                    <ul id="list-pakiet-3" class="text-neutral-400 space-y-3 mb-8 sm:mb-10 text-sm">
                         <li>10 profesjonalnych zdjęć</li>
                         <li>Dojazd do biura klienta</li>
                         <li>Licencja komercyjna</li>
                     </ul>
-                    <button id="btn-pakiet-3" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block">Wybieram</button>
+                    <button id="btn-pakiet-3" class="border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block w-full sm:w-auto">Wybieram</button>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Stopka -->
-    <footer class="text-center py-6 border-t border-neutral-900 text-neutral-600 text-sm">
+    <footer class="text-center py-6 px-4 border-t border-neutral-900 text-neutral-600 text-xs sm:text-sm">
         <p>&copy; 2026 Jan Kowalski Fotografia. Wszelkie prawa zastrzeżone.</p>
     </footer>
 
-    <!-- Skrypt do obsługi kliknięć -->
+    <!-- Skrypty -->
     <script>
-        // Pakiet ślubny jest wybrany na start
+        // 1. Obsługa menu mobilnego
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        // 2. Obsługa wyboru pakietów
         let aktualnieWybrany = 'pakiet-2';
 
         function wybierzPakiet(id, event) {
-            // Sprawdzamy, czy kliknięta karta jest już tą dużą i aktywną
             if (aktualnieWybrany === id) {
-                // Jeśli tak, sprawdzamy czy użytkownik kliknął w przycisk "Zarezerwuj"
                 if (event.target.tagName.toLowerCase() === 'button') {
-                    // Dopiero teraz wysyłamy do kontaktu
                     window.location.href = 'kontakt.html';
                 }
-                // Jeśli kliknął w tło aktywnej karty, nic się nie dzieje
                 return; 
             }
 
-            // Zmieniamy aktywny pakiet
             aktualnieWybrany = id;
 
-            // Odświeżamy kolory wszystkich kart
             const pakiety = ['pakiet-1', 'pakiet-2', 'pakiet-3'];
             pakiety.forEach(pakietId => {
                 const karta = document.getElementById(pakietId);
@@ -106,24 +138,14 @@
                 const lista = document.getElementById('list-' + pakietId);
 
                 if (pakietId === aktualnieWybrany) {
-                    // Styl dla wybranego (Biały, duży)
-                    karta.className = "border border-white p-10 text-center bg-white text-black transform scale-105 transition-all duration-500 cursor-default";
-                    naglowek.className = "text-xl uppercase tracking-widest mb-4 text-black";
-                    lista.className = "space-y-3 mb-10 text-sm text-black";
+                    // Styl dla wybranego (Biały, powiększony tylko na ekranach md i większych)
+                    karta.className = "border border-white p-6 sm:p-10 text-center bg-white text-black transform md:scale-105 shadow-2xl transition-all duration-500 cursor-default";
+                    naglowek.className = "text-lg sm:text-xl uppercase tracking-widest mb-3 sm:mb-4 text-black";
+                    lista.className = "space-y-3 mb-8 sm:mb-10 text-sm text-black";
                     
-                    przycisk.className = "bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition inline-block";
+                    przycisk.className = "bg-black text-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-neutral-800 transition inline-block w-full sm:w-auto";
                     przycisk.innerText = "Zarezerwuj";
                 } else {
                     // Styl dla niewybranych (Ciemny, normalny)
-                    karta.className = "border border-neutral-700 p-10 text-center hover:border-white transition-all duration-500 cursor-pointer";
-                    naglowek.className = "text-xl uppercase tracking-widest text-neutral-400 mb-4";
-                    lista.className = "text-neutral-400 space-y-3 mb-10 text-sm";
-                    
-                    przycisk.className = "border border-white px-6 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-black transition inline-block";
-                    przycisk.innerText = "Wybieram";
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+                    karta.className = "border border-neutral-700 p-6 sm:p-10 text-center hover:border-white transition-all duration-500 cursor-pointer";
+                    naglowek.className = "text-lg sm:
